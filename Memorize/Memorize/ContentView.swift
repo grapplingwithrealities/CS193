@@ -16,24 +16,42 @@ struct ContentView: View {
         // view builder
         // bag of legos
         // Can add other modifiers to zstack inside of ()
-        ScrollView{
-            // # of grid items determines number of items in a row
-            // adaptive allows for an automated fit for # of items
-            // minimum changes the min size of the grid item
-            // 85 fits 16 on vert/hor display
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 85))]){
-                ForEach(viewModel.cards) { card in
+        VStack{
+            Text("Theme").font(.largeTitle).foregroundColor(.purple)
+            ScrollView{
+                // # of grid items determines number of items in a row
+                // adaptive allows for an automated fit for # of items
+                // minimum changes the min size of the grid item
+                // 85 fits 16 on vert/hor display
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 85))]){
+                    ForEach(viewModel.cards) { card in
                         CardView(card: card)
                             .aspectRatio(2/3, contentMode: .fit)
                             .onTapGesture {
                                 // Ask viewModel to express user intent
                                 viewModel.choose(card)
                             }
+                    }
                 }
             }
+            .foregroundColor(.purple)
+            .padding(/*@START_MENU_TOKEN@*/.horizontal/*@END_MENU_TOKEN@*/)
+            newGameButton
         }
-        .foregroundColor(.red)
-        .padding(/*@START_MENU_TOKEN@*/.horizontal/*@END_MENU_TOKEN@*/)
+    }
+    
+    // Add/remove buttons
+    var newGameButton: some View{
+        Button{
+        } label: {
+            Image(systemName: "plus.square.fill")
+            Text("New Game")
+        }
+        .fontWeight(.bold)
+        .font(.title)
+        .foregroundColor(.purple)
+        .padding()
+        .border(Color.purple, width: 5)
     }
 }
 

@@ -40,30 +40,6 @@ struct MemoryGame<CardContent> where CardContent: Equatable{
         print("\(cards)")
     }
     
-    // This whole comment block is an intro to optionals
-//    // _ denotes using no argument label
-//    mutating func choose(_ card: Card) {
-//        if let chosenIndex = index(of: card) {
-//            cards[chosenIndex].isFaceUp.toggle()
-//        }
-//
-//        // This would crash the app if it had a nil
-//        //cards[chosenIndex!].isFaceUp.toggle()
-//
-//        print("\(cards)")
-//    }
-//
-//    // "of card:" allows of as external and card as internal var
-//    // optional<Int>
-//    func index(of card: Card) -> Int? {
-//        for index in 0..<cards.count {
-//            if cards[index].id == card.id {
-//                return index
-//            }
-//        }
-//        return nil
-//    }
-    
     init(numberOfPairsOfCards: Int, createCardContent: (Int) -> CardContent) {
         cards = Array<Card>()
         //add numberOfPairsOfCards x2 to cards array
